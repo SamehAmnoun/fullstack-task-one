@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
+const footBallRoutes = require('./routes/footBallRoutes');
 require('dotenv').config();
 // express app
 const app = express();
@@ -37,6 +38,8 @@ app.get('/about', (req, res) => {
 
 // blog routes
 app.use('/blogs', blogRoutes);
+
+app.use('/football', footBallRoutes);
 
 // 404 page
 app.use((req, res) => {
