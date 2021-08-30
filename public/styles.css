@@ -68,6 +68,8 @@
     /* details styles */
     .details{
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
     .delete{
       position: absolute;
@@ -108,4 +110,98 @@
       border: 0;
       font-size: 1.2em;
       cursor: pointer;
+    }
+
+    .stat-block{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2em;
+    }
+    .stat-block.stats-page {
+      border-left: 6px solid crimson;
+    }
+
+    .stat-title{
+      display: flex;
+      flex-direction: row;
+      gap: 2em;
+      margin-bottom: 40px;
+      margin-top: 20px;
+      padding-left: 30px;
+      margin-bottom: 1.4em;
+    }
+
+    .stat-title.stats-page:hover h3{
+      color: crimson;
+    }
+
+    .stat-title.stats-page:hover p{
+      color: crimson;
+    }
+
+    .stat-body{
+      padding-left: 3em;
+      display: flex;
+      flex-direction: row;
+      gap: 3em;
+      margin-bottom: 20px;
+    }
+    .column-title{
+      font-weight: bold;
+      padding-bottom: 0.5em;
+    }
+
+    .update-details img{
+      height: 24px;
+      width: 24px;
+    }
+    .update-details{
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      padding: 7px;
+      padding-top: 12px;
+    }
+    .update-details:hover{
+      cursor: pointer;
+      box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+    }
+
+    .delete-details{
+      border-radius: 50%;
+      margin-left: 15em;
+      padding: 8px;
+    }
+    .edit-area{
+      gap: 27em;
+      display: flex;
+      flex-direction: row;
+    }
+    .delete-details:hover{
+      cursor: pointer;
+      box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+    }
+
+    .horizontal-sep{
+      width: 60%;
+      margin-left: 20%;
+      margin-bottom: 2em;
+      border-bottom: 2px solid #222;
+    }
+    textarea {
+      width: 600px;
+      min-height: 120;
+      padding: 2px;
+      resize: none;
+      overflow: hidden;
+      background-color: transparent;
+      border: 2px solid #000;
+      border-radius: 4px;
+      font-family: "DM Sans", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      color: #000;
+    }
+
+    textarea:focus {
+      outline: none;
     }

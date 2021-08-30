@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
-const footBallRoutes = require('./routes/footBallRoutes');
+const footBallRoutes = require('./routes/covidRoutes');
 require('dotenv').config();
 // express app
 const app = express();
@@ -19,6 +19,7 @@ mongoose
 app.set('view engine', 'ejs');
 
 // middleware & static files
+app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
@@ -29,7 +30,7 @@ app.use((req, res, next) => {
 
 // routes
 app.get('/', (req, res) => {
-  res.redirect('/blogs');
+  res.redirect('/covid');
 });
 
 app.get('/about', (req, res) => {
@@ -39,7 +40,7 @@ app.get('/about', (req, res) => {
 // blog routes
 app.use('/blogs', blogRoutes);
 
-app.use('/football', footBallRoutes);
+app.use('/covid', footBallRoutes);
 
 // 404 page
 app.use((req, res) => {
