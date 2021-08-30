@@ -1,0 +1,60 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+  <div class="details content">
+    <div class="content">
+      <div class="stat-title title">
+        <h3 class="title"><%= request.country %></h3>
+        <h3 class="date"><%= request.day %></h3>
+        <a class="delete-details" data-doc="<%= request._id %>">
+          <img src="/trashcan.svg" alt="delete icon">
+        </a>
+      </div>
+      <div class="stat-body details-page">
+        <div class = 'cases stat-column'>
+          <p class='column-title'>Cases</p>
+          <p>New: <%= request.cases.new%></p>
+          <p>Active: <%= request.cases.active%></p>
+          <p>Critical: <%= request.cases.critical%></p>
+          <p>Recovered: <%= request.cases.recovered%></p>
+          <p>Total: <%= request.cases.total%></p>
+          <p>Per 1M Population: <%= request.deaths['1M_pop']%></p>
+        </div>
+        <div class = 'deaths stat-column'>
+          <p class='column-title'>Deaths</p>
+          <p>New: <%= request.deaths.new%></p>
+          <p>Total: <%= request.deaths.total%></p>
+          <p>Per 1M Population: <%= request.deaths['1M_pop']%></p>
+        </div>
+        <div class = 'tests stat-column'>
+          <p class='column-title'>Tests Done</p>
+          <p>Total: <%= request.tests.total%></p>
+          <p>Per 1M Population: <%= request.tests['1M_pop']%></p>
+        </div>
+      </div>
+      <div class="horizontal-sep""></div>
+    </div>
+</div>
+
+  <%- include("./partials/footer.ejs") %>
+
+  <script>
+
+    const trashcan = document.querySelector('a.delete-details');
+
+
+    trashcan.addEventListener('click', (e) => {
+      const endpoint = `/covid/${trashcan.dataset.doc}`;
+
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+  </script>
+</body>
+</html>

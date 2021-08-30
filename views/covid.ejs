@@ -1,0 +1,43 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="Covid consumed Statistics">
+    <h2>All Covid Statistics</h2>
+
+    <% if (requests.length > 0) { %>
+      <% requests.forEach(request => { %>
+        <a class="stat-block stats-page" href="/covid/<%= request._id %>">
+      <div class="stat-title stats-page">
+        <h3 class="title"><%= request.country %></h3>
+        <p class="date"><%= request.day %></p>
+      </div>
+      <div class="stat-body">
+        <div class = 'cases stat-column'>
+          <p class='column-title'>Cases</p>
+          <p>New: <%= request.cases.new%></p>
+          <p>Total: <%= request.deaths.total%></p>
+        </div>
+        <div class = 'deaths stat-column'>
+          <p class='column-title'>Deaths</p>
+          <p>New: <%= request.deaths.new%></p>
+          <p>Total: <%= request.deaths.total%></p>
+        </div>
+        <div class = 'tests stat-column'>
+          <p class='column-title'>Tests</p>
+          <p>Total: <%= request.tests.total%></p>
+        </div>
+      </div>
+    </a>
+      <% }) %>
+    <% } else { %>
+      <p>There are no covid related statistics to display...</p>
+    <% } %>
+
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+</body>
+</html>
