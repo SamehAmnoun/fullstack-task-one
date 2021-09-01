@@ -8,13 +8,10 @@ require('dotenv').config();
 const app = express();
 
 // connect to mongodb & listen for requests
-const dbURI =
-  process.env.DB_URI ||
-  'mongodb+srv://Test-User:pDbHTjGpNWDZenW9@valero.yen6t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-
+const dbURI = process.env.DB_URI;
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((result) => app.listen(process.env.PORT || 3000))
+  .then((result) => app.listen(process.env.PORT))
   .catch((err) => console.log(err));
 
 // register view engine

@@ -8,7 +8,7 @@ const requestCountryStatistics = (req, res) => {
     params: { country: req.query.country, day: req.query.day },
     headers: {
       'x-rapidapi-host': 'covid-193.p.rapidapi.com',
-      'x-rapidapi-key': '06bc465888mshee965a0f62cbeb5p1ed86ejsn1a2ace47ca6f',
+      'x-rapidapi-key': process.env.API_KEY,
     },
   };
 
